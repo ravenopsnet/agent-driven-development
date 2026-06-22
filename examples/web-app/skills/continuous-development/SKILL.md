@@ -19,7 +19,8 @@ Produce boring, project-native, maintainable code that fits the repository and i
 2. Read `AGENTS.md`.
 3. Read `docs/architecture.md` when the task touches architecture, modules, data, APIs, UI structure, backend services, or project conventions.
 4. Read `docs/testing.md` before deciding which tests to create or run.
-5. Classify the change type.
+5. Read `DESIGN.md` when the task touches UI, styling, layout, product pages, marketing pages, docs visuals, or reusable UI patterns.
+6. Classify the change type.
 6. Identify the smallest safe implementation.
 7. Identify affected contracts, data, permissions, and user flows.
 8. Decide the required tests before coding.
@@ -39,6 +40,7 @@ Classify the work as one or more of:
 - API change
 - database change
 - UI change
+- visual design change
 - performance change
 - security-sensitive change
 - dependency/tooling change
@@ -55,6 +57,7 @@ Follow `docs/testing.md`.
 - Database change: write/update migration tests.
 - Auth/permission change: write allowed and denied cases.
 - UI flow change: write component tests and critical E2E smoke tests when appropriate.
+- Visual design change: implement against `DESIGN.md` and capture screenshot evidence when possible.
 - Performance change: add measurement or benchmark evidence.
 
 ## Implementation rules
@@ -94,3 +97,33 @@ Provide:
 - Commands run and result.
 - Risks or assumptions.
 - What should `continuous-delivery` verify next.
+
+
+## UI and design mode
+
+Use this mode for UI, layout, styling, product page, marketing page, docs visual, and reusable component-pattern work.
+
+Before coding:
+
+1. Read `DESIGN.md`.
+2. Inspect nearby existing UI and component usage.
+3. Identify the page or component's single job.
+4. Define visual hierarchy, layout structure, states, and responsive behavior.
+5. Reuse the project component library first.
+6. Use semantic CSS variables and Tailwind classes instead of hard-coded brand values.
+
+Implementation rules:
+
+- Do not invent a new visual language.
+- Do not create local duplicates of existing component-library primitives.
+- Implement relevant loading, empty, error, success, disabled, focused, and validation states.
+- Preserve keyboard navigation and visible focus states.
+- Keep responsive behavior explicit.
+- Update `DESIGN.md` only when the design system intentionally changes.
+
+Handoff requirements for meaningful UI changes:
+
+- Summarize how the UI follows `DESIGN.md`.
+- List component-library primitives used.
+- Provide screenshot or Playwright evidence when possible.
+- State any visual risks or unresolved design decisions.

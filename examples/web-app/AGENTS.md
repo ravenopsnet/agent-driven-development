@@ -14,8 +14,9 @@ For normal tasks:
 1. Read this file.
 2. Read `docs/architecture.md` if changing architecture, modules, contracts, database, backend services, frontend structure, docs site, or project conventions.
 3. Read `docs/testing.md` before deciding what tests to create or run.
-4. Use `continuous-development` to plan, implement, and create tests.
-5. Use `continuous-delivery` to verify evidence and release readiness.
+4. Read `DESIGN.md` before UI, styling, layout, docs visual, product page, marketing page, or reusable UI pattern changes.
+5. Use `continuous-development` to plan, implement, and create tests.
+6. Use `continuous-delivery` to verify evidence and release readiness.
 
 ## Tech stack
 
@@ -26,7 +27,8 @@ For normal tasks:
 - TanStack Start deployment target: Nitro with Bun preset.
 - Full-stack app: TanStack Start in `apps/web`.
 - Frontend: React, TanStack Router, Query, DB, Table, Form, Store.
-- Styling: Tailwind CSS.
+- Styling: Tailwind CSS with a shadcn-compatible CSS variable theme bridge in `apps/web/src/styles.css`.
+- Visual identity: `DESIGN.md`.
 - UI package: external npm package `@ravenopsnet/ui`; do not create a local `packages/ui` package unless explicitly requested.
 - Forms: TanStack Form.
 - Validation: Zod.
@@ -66,6 +68,8 @@ For normal tasks:
 - Keep shared business types and Zod schemas in `packages/domain`.
 - Import reusable UI from external `@ravenopsnet/ui`.
 - Do not create local duplicate UI primitives for components already available from `@ravenopsnet/ui`.
+- For UI changes, read `DESIGN.md` first and implement with semantic Tailwind/shadcn variables.
+- Do not hard-code RAVEN brand hex values in route components; put theme values in the CSS token bridge.
 - Do not make app packages import private internals from other packages.
 - Use package exports.
 - Keep PRs small and focused.
@@ -77,5 +81,14 @@ For normal tasks:
 
 - Update `docs/architecture.md` when architecture, boundaries, modules, data ownership, contracts, stack choices, or app responsibilities change.
 - Update `docs/testing.md` when test tools, commands, test policy, or CI behavior changes.
+- Update `DESIGN.md` when visual identity, design tokens, component rules, or reusable UI patterns intentionally change.
 - Agents may update factual docs.
 - Humans approve changes to architecture principles, delivery policy, security policy, and stack choices.
+
+
+## Design token ownership
+
+- `DESIGN.md` defines the semantic design contract.
+- `apps/web/src/styles.css` implements that contract as Tailwind/shadcn-compatible CSS variables for this app.
+- `@ravenopsnet/ui` should consume semantic variables exposed by the app, not require a local `packages/ui` copy.
+- If `DESIGN.md` and the executable CSS theme disagree, fix the mismatch or explicitly document the intentional design-system change.

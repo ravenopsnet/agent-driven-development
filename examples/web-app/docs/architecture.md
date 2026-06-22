@@ -146,3 +146,12 @@ Avoid:
 ## Update policy
 
 Update this document when the stack, package boundaries, module ownership, API contracts, database ownership, security model, docs architecture, or major architecture decisions change.
+
+
+## Design system
+
+`DESIGN.md` is the visual identity and UI design source of truth.
+
+UI implementation should use the project's component library and executable theme tokens. In Tailwind/shadcn projects, the app should expose semantic CSS variables such as `--background`, `--foreground`, `--primary`, `--border`, `--ring`, and `--radius` so reusable components render consistently across projects.
+
+Architecture changes that introduce new reusable UI patterns, app shells, navigation systems, or design token conventions must update `DESIGN.md` in the same PR.

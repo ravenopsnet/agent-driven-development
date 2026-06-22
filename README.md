@@ -11,6 +11,7 @@ The repo contains:
 
 ```text
 AGENTS.md
+DESIGN.md
 docs/
   architecture.md
   testing.md
@@ -44,3 +45,10 @@ skills/
 Copy `common-project-base` into a new project for a clean Agent Driven Development foundation.
 
 Use `examples/web-app` as a concrete implementation reference for TypeScript web applications.
+
+
+## Design system contract
+
+Projects include `DESIGN.md` as the visual identity and UI contract for agents. In Tailwind/shadcn projects, `DESIGN.md` should match the executable CSS variables used by the app and component library.
+
+For the web-app reference, `@ravenopsnet/ui` is treated as the component source of truth, while the consuming app provides the shadcn-compatible CSS variables and Tailwind theme bridge.

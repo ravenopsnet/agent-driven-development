@@ -1,10 +1,125 @@
 @import 'tailwindcss';
 
+/*
+  Tailwind must scan external UI package classes because @ravenopsnet/ui is consumed from npm.
+  Adjust the source path if the package ships precompiled CSS instead of class-bearing components.
+*/
+@source '../../../node_modules/@ravenopsnet/ui/**/*.{js,jsx,ts,tsx,mjs}';
+
+@theme {
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --color-raven-void: #08070d;
+  --color-raven-abyss: #0d0b14;
+  --color-raven-dusk: #171321;
+  --color-raven-slate: #35313f;
+  --color-raven-ash: #a9a2b5;
+  --color-raven-parchment: #f4efe4;
+  --color-raven-amber: #f59e0b;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
 :root {
-  color-scheme: light dark;
+  color-scheme: dark;
+
+  /* RAVEN brand tokens, mirrored from DESIGN.md. */
+  --raven-void: #08070d;
+  --raven-abyss: #0d0b14;
+  --raven-dusk: #171321;
+  --raven-slate: #35313f;
+  --raven-ash: #a9a2b5;
+  --raven-parchment: #f4efe4;
+  --raven-amber: #f59e0b;
+
+  /* shadcn-compatible semantic bridge consumed by @ravenopsnet/ui. */
+  --background: var(--raven-abyss);
+  --foreground: var(--raven-parchment);
+  --card: var(--raven-dusk);
+  --card-foreground: var(--raven-parchment);
+  --popover: var(--raven-dusk);
+  --popover-foreground: var(--raven-parchment);
+  --primary: var(--raven-amber);
+  --primary-foreground: var(--raven-void);
+  --secondary: #211b2d;
+  --secondary-foreground: var(--raven-parchment);
+  --muted: #211b2d;
+  --muted-foreground: var(--raven-ash);
+  --accent: var(--raven-amber);
+  --accent-foreground: var(--raven-void);
+  --destructive: #ef4444;
+  --destructive-foreground: #fff7f7;
+  --border: color-mix(in srgb, var(--raven-slate) 72%, transparent);
+  --input: color-mix(in srgb, var(--raven-slate) 78%, transparent);
+  --ring: var(--raven-amber);
+  --radius: 0.75rem;
+}
+
+.light {
+  color-scheme: light;
+
+  --background: #f7f1e7;
+  --foreground: var(--raven-void);
+  --card: #fffaf0;
+  --card-foreground: var(--raven-void);
+  --popover: #fffaf0;
+  --popover-foreground: var(--raven-void);
+  --primary: var(--raven-void);
+  --primary-foreground: var(--raven-parchment);
+  --secondary: #ece3d4;
+  --secondary-foreground: var(--raven-void);
+  --muted: #ece3d4;
+  --muted-foreground: #5b5367;
+  --accent: var(--raven-amber);
+  --accent-foreground: var(--raven-void);
+  --destructive: #dc2626;
+  --destructive-foreground: #fff7f7;
+  --border: #d8cfc0;
+  --input: #d8cfc0;
+  --ring: var(--raven-amber);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
 }
 
 body {
   margin: 0;
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--raven-amber) 10%, transparent), transparent 30rem),
+    var(--background);
+  color: var(--foreground);
 }

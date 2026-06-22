@@ -5,6 +5,7 @@ agent-driven-development/
   README.md
   common-project-base/
     AGENTS.md
+    DESIGN.md
     docs/
       architecture.md
       testing.md
@@ -17,6 +18,7 @@ agent-driven-development/
   examples/
     web-app/
       AGENTS.md
+      DESIGN.md
       docs/
         architecture.md
         testing.md

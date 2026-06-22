@@ -24,6 +24,7 @@ Create or update:
 - `.github/PULL_REQUEST_TEMPLATE.md`
 - test commands in `package.json` or equivalent
 - `docs/testing.md`
+- `DESIGN.md` when setting up a UI project or changing design-system delivery rules
 - delivery-related instructions in `AGENTS.md`
 - release checklist if the project deploys to production
 
@@ -55,7 +56,9 @@ Verify:
 - Test evidence is present.
 - Build evidence is present.
 - Security, permissions, data, and migration risks are considered.
-- UI screenshots or recordings are included for UI changes when useful.
+- UI changes follow `DESIGN.md`.
+- UI screenshots or recordings are included for meaningful UI changes when useful.
+- Design token changes are mirrored between `DESIGN.md` and the executable CSS/theme implementation.
 - Rollback is understood.
 - Known limitations are stated.
 
@@ -75,6 +78,8 @@ Reject or send back to `continuous-development` if:
 - Database changes lack migration evidence.
 - Auth/permission changes lack denied-case tests.
 - CI commands fail.
+- UI changes ignore `DESIGN.md` or introduce one-off visual patterns without justification.
+- Design tokens changed in CSS/theme files without updating `DESIGN.md`, or vice versa.
 - The PR evidence is missing or vague.
 - The change has hidden risk or unclear rollback.
 
@@ -88,3 +93,16 @@ Produce:
 - Blocking issues.
 - Non-blocking follow-ups.
 - Release and rollback notes.
+
+
+## Visual verification
+
+For UI, layout, styling, product page, marketing page, docs visual, or design-system changes, verify:
+
+- `DESIGN.md` was read and followed.
+- Existing component-library primitives were reused before creating new local UI.
+- Semantic CSS variables/classes were used instead of hard-coded brand values.
+- Desktop and mobile behavior were considered.
+- Loading, empty, error, success, disabled, focus, and validation states are covered when relevant.
+- Screenshot or Playwright evidence exists for meaningful visual changes when possible.
+- Any intentional token, visual identity, or reusable pattern change updated `DESIGN.md`.

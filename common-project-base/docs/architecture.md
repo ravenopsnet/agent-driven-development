@@ -59,3 +59,12 @@ TODO: List project-specific forbidden patterns.
 ## Update policy
 
 Update this document when a change modifies architecture, module boundaries, data ownership, public contracts, stack choices, or important conventions.
+
+
+## Design system
+
+`DESIGN.md` is the visual identity and UI design source of truth.
+
+UI implementation should use the project's component library and executable theme tokens. In Tailwind/shadcn projects, the app should expose semantic CSS variables such as `--background`, `--foreground`, `--primary`, `--border`, `--ring`, and `--radius` so reusable components render consistently across projects.
+
+Architecture changes that introduce new reusable UI patterns, app shells, navigation systems, or design token conventions must update `DESIGN.md` in the same PR.

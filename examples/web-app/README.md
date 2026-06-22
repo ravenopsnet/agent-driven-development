@@ -72,3 +72,11 @@ pnpm build
 - Keep project-specific facts in `AGENTS.md`, `docs/architecture.md`, and `docs/testing.md`.
 - Use `continuous-development` to implement code and tests.
 - Use `continuous-delivery` to verify PR evidence and delivery readiness.
+
+
+## Design system
+
+- `DESIGN.md` is the visual identity and UI contract.
+- `apps/web/src/styles.css` implements the Tailwind/shadcn CSS variable bridge for the app.
+- `@ravenopsnet/ui` is consumed from npm and should use semantic variables provided by the app.
+- UI changes should include screenshot evidence when meaningful.

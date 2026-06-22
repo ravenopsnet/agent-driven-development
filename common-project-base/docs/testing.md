@@ -71,3 +71,17 @@ Minimum PR gate:
 ## Update policy
 
 Update this document when test commands, test tools, CI behavior, or testing requirements change.
+
+
+## Visual verification
+
+For meaningful UI changes:
+
+- run the relevant component tests
+- run E2E smoke tests when the change affects a critical flow
+- include screenshot evidence when possible
+- verify mobile and desktop behavior
+- verify loading, empty, error, success, disabled, focus, and validation states when relevant
+- verify the UI follows `DESIGN.md`
+
+Visual regression testing can be added later when the product has enough stable screens to justify snapshot maintenance.

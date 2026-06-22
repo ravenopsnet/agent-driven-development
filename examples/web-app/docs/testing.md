@@ -108,3 +108,17 @@ tests/e2e/**/*.spec.ts
 ## Update policy
 
 Update this document when commands, test tools, test locations, CI behavior, or required tests by change type change.
+
+
+## Visual verification
+
+For meaningful UI changes:
+
+- run the relevant component tests
+- run E2E smoke tests when the change affects a critical flow
+- include screenshot evidence when possible
+- verify mobile and desktop behavior
+- verify loading, empty, error, success, disabled, focus, and validation states when relevant
+- verify the UI follows `DESIGN.md`
+
+Visual regression testing can be added later when the product has enough stable screens to justify snapshot maintenance.
