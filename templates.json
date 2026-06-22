@@ -1,0 +1,14 @@
+{
+  "templates": [
+    {
+      "name": "common-project-base",
+      "path": "common-project-base",
+      "description": "Minimal agent-driven project base with AGENTS.md, skills, docs, CI, and PR evidence template."
+    },
+    {
+      "name": "web-app",
+      "path": "examples/web-app",
+      "description": "Reference TypeScript web app monorepo using pnpm, Vite+, Bun, TanStack Start, Better Auth, Drizzle, Turso, Effect, Astro Starlight, Vitest/Playwright, and OXC."
+    }
+  ]
+}

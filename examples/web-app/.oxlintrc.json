@@ -1,0 +1,19 @@
+{
+  "plugins": [
+    "typescript",
+    "react",
+    "jsx-a11y",
+    "import"
+  ],
+  "rules": {
+    "no-debugger": "error",
+    "no-unused-vars": "warn",
+    "react/jsx-no-target-blank": "error"
+  },
+  "ignorePatterns": [
+    "**/dist/**",
+    "**/.output/**",
+    "**/.astro/**",
+    "**/routeTree.gen.ts"
+  ]
+}

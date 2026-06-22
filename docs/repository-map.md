@@ -1,0 +1,37 @@
+# Repository Map
+
+```text
+agent-driven-development/
+  README.md
+  common-project-base/
+    AGENTS.md
+    docs/
+      architecture.md
+      testing.md
+    skills/
+      continuous-development/SKILL.md
+      continuous-delivery/SKILL.md
+    .github/
+      workflows/ci.yml
+      PULL_REQUEST_TEMPLATE.md
+  examples/
+    web-app/
+      AGENTS.md
+      docs/
+        architecture.md
+        testing.md
+      skills/
+      apps/
+        web/
+        core/
+        docs/
+      packages/
+        config/
+        db/
+        domain/
+      tests/
+        e2e/
+      .github/
+        workflows/ci.yml
+        PULL_REQUEST_TEMPLATE.md
+```

@@ -1,0 +1,8 @@
+---
+title: Architecture
+description: Public-facing architecture notes for the reference project.
+---
+
+The app uses TanStack Start in `apps/web` and imports backend business logic from `apps/core`.
+
+`apps/core` is an importable code module, not a standalone HTTP API server.

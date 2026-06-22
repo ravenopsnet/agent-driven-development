@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "semi": false,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "printWidth": 100,
+  "ignorePatterns": [
+    "**/dist/**",
+    "**/.output/**",
+    "**/.astro/**",
+    "**/routeTree.gen.ts"
+  ]
+}

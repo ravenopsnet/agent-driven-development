@@ -1,0 +1,23 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./apps/web" },
+    { "path": "./apps/core" },
+    { "path": "./apps/docs" },
+    { "path": "./packages/config" },
+    { "path": "./packages/db" },
+    { "path": "./packages/domain" }
+  ],
+  "compilerOptions": {
+    "target": "ES2024",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "jsx": "react-jsx",
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "types": ["bun-types", "vitest/globals"]
+  }
+}

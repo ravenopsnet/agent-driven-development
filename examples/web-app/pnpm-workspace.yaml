@@ -1,0 +1,49 @@
+packages:
+  - apps/*
+  - packages/*
+
+catalog:
+  typescript: ^6.0.3
+  vite-plus: latest
+  '@voidzero-dev/vite-plus-core': latest
+  oxlint: latest
+  oxfmt: latest
+  vitest: latest
+  '@vitest/coverage-v8': latest
+  '@playwright/test': latest
+  '@testing-library/react': latest
+  '@testing-library/user-event': latest
+  '@testing-library/jest-dom': latest
+  happy-dom: latest
+  msw: latest
+  astro: latest
+  '@astrojs/check': latest
+  '@astrojs/starlight': latest
+  '@tanstack/react-start': latest
+  '@tanstack/react-router': latest
+  '@tanstack/router-plugin': latest
+  nitro: latest
+  '@tanstack/react-query': latest
+  '@tanstack/react-db': latest
+  '@tanstack/db': latest
+  '@tanstack/react-table': latest
+  '@tanstack/react-form': latest
+  '@tanstack/react-store': latest
+  '@vitejs/plugin-react': latest
+  '@types/bun': latest
+  '@types/react': latest
+  '@types/react-dom': latest
+  react: latest
+  react-dom: latest
+  tailwindcss: latest
+  '@tailwindcss/vite': latest
+  '@ravenopsnet/ui': latest
+  better-auth: latest
+  zod: latest
+  drizzle-orm: latest
+  drizzle-kit: latest
+  '@libsql/client': latest
+  effect: beta
+
+overrides:
+  vite: npm:@voidzero-dev/vite-plus-core@latest

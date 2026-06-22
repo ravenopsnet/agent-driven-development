@@ -1,0 +1,39 @@
+{
+  "name": "@ravenopsnet/web-app-reference",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11",
+  "scripts": {
+    "dev": "vp dev",
+    "check": "pnpm lint && pnpm format && pnpm typecheck && pnpm test",
+    "lint": "oxlint .",
+    "format": "oxfmt --check .",
+    "format:write": "oxfmt --write .",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "test": "vitest run --workspace vitest.workspace.ts",
+    "test:watch": "vitest --workspace vitest.workspace.ts",
+    "test:coverage": "vitest run --workspace vitest.workspace.ts --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:install": "playwright install --with-deps",
+    "build": "vp build",
+    "clean": "pnpm -r exec rm -rf dist .output coverage .astro",
+    "db:generate": "pnpm --filter @ravenopsnet/db db:generate",
+    "db:migrate": "pnpm --filter @ravenopsnet/db db:migrate",
+    "auth:generate": "pnpm --filter @ravenopsnet/core auth:generate"
+  },
+  "devDependencies": {
+    "@playwright/test": "catalog:",
+    "@testing-library/jest-dom": "catalog:",
+    "@testing-library/react": "catalog:",
+    "@testing-library/user-event": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "@voidzero-dev/vite-plus-core": "catalog:",
+    "happy-dom": "catalog:",
+    "msw": "catalog:",
+    "oxfmt": "catalog:",
+    "oxlint": "catalog:",
+    "typescript": "catalog:",
+    "vite-plus": "catalog:",
+    "vitest": "catalog:"
+  }
+}
