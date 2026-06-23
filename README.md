@@ -52,3 +52,8 @@ Use `examples/web-app` as a concrete implementation reference for TypeScript web
 Projects include `DESIGN.md` as the visual identity and UI contract for agents. In Tailwind/shadcn projects, `DESIGN.md` should match the executable CSS variables used by the app and component library.
 
 For the web-app reference, `@ravenopsnet/ui` is treated as the component source of truth, while the consuming app provides the shadcn-compatible CSS variables and Tailwind theme bridge.
+
+
+## Usage
+
+Read [HOW_TO_USE.md](./HOW_TO_USE.md) for the concrete workflow and prompt templates.
