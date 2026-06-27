@@ -1,7 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { createServerFn } from '@tanstack/react-start'
 import { Button } from '@ravenopsnet/ui/button'
-import { getSystemHealth } from '@ravenopsnet/core'
+import { getSystemHealth } from '@ravenopsnet/health'
+import { HealthStatus } from '@ravenopsnet/health/web'
+import { CustomersReferencePanel } from '@ravenopsnet/customers/web'
 
 const getHealth = createServerFn({ method: 'GET' }).handler(async () => getSystemHealth())
 
@@ -23,9 +25,8 @@ function HomePage() {
         A minimal reference app for pnpm, Vite+, TypeScript 6, TanStack Start on Bun,
         Better Auth, Drizzle, Turso, Effect, Tailwind, OXC, and the external @ravenopsnet/ui package.
       </p>
-      <p className="text-sm text-muted-foreground">
-        Core health: {health.service} on {health.runtime}
-      </p>
+      <HealthStatus health={health} />
+      <CustomersReferencePanel />
       <Button>Start building</Button>
     </main>
   )

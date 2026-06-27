@@ -2,11 +2,12 @@
   "files": [],
   "references": [
     { "path": "./apps/web" },
-    { "path": "./apps/core" },
     { "path": "./apps/docs" },
+    { "path": "./modules/auth" },
+    { "path": "./modules/customers" },
+    { "path": "./modules/health" },
     { "path": "./packages/config" },
-    { "path": "./packages/db" },
-    { "path": "./packages/domain" }
+    { "path": "./packages/db" }
   ],
   "compilerOptions": {
     "target": "ES2024",

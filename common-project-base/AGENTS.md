@@ -2,60 +2,59 @@
 
 This repository is developed with AI coding agents. Optimize for correctness, maintainability, security, minimal diffs, and production confidence.
 
+## Source of truth
+
+- `SOW.md` is the product-level Functional & Technical Specification / Statement of Work.
+- `DESIGN.md` is the visual identity and UI behavior source of truth.
+- `modules/<domain>/SPEC.md` is the domain/module source of truth.
+- `modules/<domain>/USE_CASES.md` defines user workflows for the domain.
+- `modules/<domain>/UX.md` defines screens, states, and frontend behavior for the domain.
+- `modules/<domain>/CONTRACTS.md` defines schemas, function contracts, errors, permissions, and boundaries.
+- `modules/<domain>/TEST_PLAN.md` defines required tests for that module.
+- `.agents/skills/ux-first-acceptance-loop/SKILL.md` defines the standard workflow.
+
+## Architecture
+
+This project uses domain-oriented vertical slices. Each domain module owns specs, contracts, domain models, core business logic, database ownership, web UI building blocks, tests, fixtures, and delivery evidence.
+
+App folders such as `apps/web` should be thin runtime hosts. They wire routes, providers, layouts, and deployment concerns; domain behavior lives in `modules/<domain>`.
+
+## Testing architecture
+
+Tests are colocated with modules by default:
+
+- module unit tests: `modules/<domain>/tests/unit`
+- module integration tests: `modules/<domain>/tests/integration`
+- module E2E/acceptance tests: `modules/<domain>/tests/e2e`
+- module fixtures: `modules/<domain>/tests/fixtures`
+- cross-domain smoke and workflow tests: `tests/e2e`
+
+Frontend mocks are allowed only when they are based on module contracts. Do not let mocks become an independent source of truth.
+
 ## Standard workflow
 
-Use the `continuous-development` skill before implementation.
-Use the `continuous-delivery` skill before declaring work complete.
+Use `.agents/skills/ux-first-acceptance-loop/SKILL.md` for meaningful product work.
 
-Per change:
-
-1. Understand the request and relevant project context.
-2. Read `docs/architecture.md` when touching architecture, modules, API boundaries, data ownership, or project conventions.
-3. Read `docs/testing.md` before deciding which tests to create or run.
-4. Read `DESIGN.md` before UI, styling, layout, product page, marketing page, or visual design changes.
-5. Use `skills/continuous-development/SKILL.md` to plan and implement the change.
-6. Use `skills/continuous-delivery/SKILL.md` to verify evidence and release readiness.
-7. Do not claim completion without evidence.
-
-## Project commands
-
-Update these commands for the actual project.
-
-- Install: `TODO`
-- Format/check: `TODO`
-- Typecheck: `TODO`
-- Lint: `TODO`
-- Unit tests: `TODO`
-- Integration tests: `TODO`
-- Contract tests: `TODO`
-- E2E smoke tests: `TODO`
-- Build: `TODO`
+1. Convert product requirements into `SOW.md`.
+2. Derive domain modules from `SOW.md`.
+3. For each domain, create specs, use cases, UX flows, contracts, and test plan.
+4. Create frontend acceptance tests from UX flows and contracts.
+5. Implement UI from the acceptance tests and `DESIGN.md`.
+6. Create backend/domain tests from contracts and business rules.
+7. Implement domain models, core functions, database schema, and migrations.
+8. Wire thin app routes to module implementation.
+9. Run module tests and cross-domain E2E flows.
+10. Record delivery evidence.
 
 ## Engineering rules
 
-- Prefer small, local, project-native changes.
-- Follow existing patterns before introducing new abstractions.
-- Do not change public contracts without contract or integration tests.
-- Do not change database schema without migration tests.
+- Prefer working inside one domain module at a time.
+- Do not implement code before relevant module docs are coherent.
+- Do not create frontend mocks without contracts.
+- Do not implement backend/core code before backend/domain tests exist where practical.
+- Do not change public contracts without updating `CONTRACTS.md` and relevant tests.
+- Do not change product scope without updating `SOW.md`.
+- Do not change UX behavior without updating `UX.md` and relevant acceptance tests.
+- Do not change visual design rules without updating `DESIGN.md`.
 - Do not weaken or delete tests to make a change pass.
 - Do not bypass failing checks.
-- Do not introduce new dependencies without justification.
-- Do not hide uncertainty. State what was not verified.
-- Keep documentation updated when the code changes the truth.
-
-## Documentation rules
-
-- `docs/architecture.md` is the architecture source of truth.
-- `docs/testing.md` is the testing policy source of truth.
-- `DESIGN.md` is the visual identity and UI design source of truth.
-- Agents may update documentation facts.
-- Humans approve changes to architecture principles, stack choices, CI policy, release policy, and security policy.
-
-
-## Design rules
-
-- Read `DESIGN.md` before UI, layout, styling, docs visual, product page, or marketing page changes.
-- Reuse the project component library before creating local UI primitives.
-- Do not hard-code brand colors in feature code when design tokens or semantic CSS variables exist.
-- Update `DESIGN.md` when visual identity, tokens, component usage rules, or reusable UI patterns intentionally change.
-- Humans approve changes to brand identity, visual direction, and design-system tokens.

@@ -1,4 +1,5 @@
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
+export { customers } from '../../../modules/customers/db/customers.table'
 
 export const user = sqliteTable('user', {
   id: text('id').primaryKey(),
@@ -48,12 +49,4 @@ export const verification = sqliteTable('verification', {
   expiresAt: integer('expires_at', { mode: 'timestamp' }).notNull(),
   createdAt: integer('created_at', { mode: 'timestamp' }),
   updatedAt: integer('updated_at', { mode: 'timestamp' }),
-})
-
-export const customers = sqliteTable('customers', {
-  id: text('id').primaryKey(),
-  name: text('name').notNull(),
-  email: text('email'),
-  createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
-  updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull(),
 })

@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@ravenopsnet/config": "workspace:*",
-    "@ravenopsnet/core": "workspace:*",
-    "@ravenopsnet/domain": "workspace:*",
     "@ravenopsnet/ui": "catalog:",
     "@tanstack/db": "catalog:",
     "@tanstack/react-db": "catalog:",
@@ -27,7 +25,10 @@
     "react": "catalog:",
     "react-dom": "catalog:",
     "tailwindcss": "catalog:",
-    "zod": "catalog:"
+    "zod": "catalog:",
+    "@ravenopsnet/auth": "workspace:*",
+    "@ravenopsnet/customers": "workspace:*",
+    "@ravenopsnet/health": "workspace:*"
   },
   "devDependencies": {
     "@tanstack/router-plugin": "catalog:",

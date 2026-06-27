@@ -1,0 +1,30 @@
+{
+  "name": "@ravenopsnet/customers",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./domain": "./domain/index.ts",
+    "./core": "./core/index.ts",
+    "./db": "./db/index.ts",
+    "./web": "./web/index.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "drizzle-orm": "catalog:",
+    "effect": "catalog:",
+    "zod": "catalog:",
+    "@ravenopsnet/ui": "catalog:",
+    "@tanstack/react-query": "catalog:",
+    "react": "catalog:"
+  },
+  "devDependencies": {
+    "@testing-library/react": "catalog:",
+    "@testing-library/user-event": "catalog:",
+    "happy-dom": "catalog:",
+    "vitest": "catalog:"
+  }
+}

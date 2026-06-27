@@ -1,5 +1,5 @@
 import { createAPIFileRoute } from '@tanstack/react-start/api'
-import { auth } from '@ravenopsnet/core/auth'
+import { auth } from '@ravenopsnet/auth/core'
 
 export const APIRoute = createAPIFileRoute('/api/auth/$')({
   GET: ({ request }) => auth.handler(request),

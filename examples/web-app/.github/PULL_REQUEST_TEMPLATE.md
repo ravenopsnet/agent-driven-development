@@ -68,14 +68,3 @@ Required for meaningful UI changes.
 ## Known limitations / follow-ups
 
 List any known gaps or follow-up tasks.
-
-
-## Design / UI evidence
-
-- [ ] No UI/design changes
-- [ ] Read and followed `DESIGN.md`
-- [ ] Reused existing component-library primitives
-- [ ] Desktop behavior checked
-- [ ] Mobile behavior checked
-- [ ] Screenshot/recording evidence included when useful
-- [ ] `DESIGN.md` updated if visual identity, tokens, or reusable UI patterns changed

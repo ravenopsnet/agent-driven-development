@@ -1,94 +1,76 @@
 # AGENTS.md
 
-This repository is a TypeScript web application monorepo developed with AI coding agents.
+This web app reference is developed with AI coding agents. Optimize for correctness, maintainability, security, minimal diffs, and production confidence.
 
-Optimize for correctness, maintainability, security, minimal diffs, and production confidence.
+## Source of truth
+
+- `SOW.md` is the product-level Functional & Technical Specification / Statement of Work.
+- `DESIGN.md` is the visual identity and UI behavior source of truth.
+- `modules/<domain>/SPEC.md` is the domain/module source of truth.
+- `modules/<domain>/USE_CASES.md` defines user workflows for the domain.
+- `modules/<domain>/UX.md` defines screens, states, and frontend behavior for the domain.
+- `modules/<domain>/CONTRACTS.md` defines schemas, function contracts, errors, permissions, and boundaries.
+- `modules/<domain>/TEST_PLAN.md` defines required tests for that module.
+- `.agents/skills/ux-first-acceptance-loop/SKILL.md` defines the standard workflow.
+
+## Stack
+
+- monorepo: pnpm
+- tooling: Vite+
+- language: TypeScript 6
+- runtime: Bun
+- full-stack app: TanStack Start in `apps/web`
+- product docs: Astro + Starlight in `apps/docs`
+- frontend: React, TanStack Router, Query, DB, Table, Form, Store
+- styling: Tailwind CSS
+- component library: external npm package `@ravenopsnet/ui`
+- auth: Better Auth
+- ORM/database: Drizzle ORM + Turso/libSQL
+- testing: Vitest, React Testing Library, MSW, Playwright
+- linting/formatting: OXC through Oxlint and Oxfmt
+
+## Architecture
+
+This project uses domain-oriented vertical slices. Each domain module owns specs, contracts, domain models, core business logic, database ownership, web UI building blocks, tests, fixtures, and delivery evidence.
+
+App folders such as `apps/web` should be thin runtime hosts. They wire routes, providers, layouts, and deployment concerns; domain behavior lives in `modules/<domain>`.
+
+## Testing architecture
+
+Tests are colocated with modules by default:
+
+- module unit tests: `modules/<domain>/tests/unit`
+- module integration tests: `modules/<domain>/tests/integration`
+- module E2E/acceptance tests: `modules/<domain>/tests/e2e`
+- module fixtures: `modules/<domain>/tests/fixtures`
+- cross-domain smoke and workflow tests: `tests/e2e`
+
+Frontend mocks are allowed only when they are based on module contracts. Do not let mocks become an independent source of truth.
 
 ## Standard workflow
 
-Use `skills/continuous-development/SKILL.md` before implementation.
-Use `skills/continuous-delivery/SKILL.md` before declaring work complete.
+Use `.agents/skills/ux-first-acceptance-loop/SKILL.md` for meaningful product work.
 
-For normal tasks:
-
-1. Read this file.
-2. Read `docs/architecture.md` if changing architecture, modules, contracts, database, backend services, frontend structure, docs site, or project conventions.
-3. Read `docs/testing.md` before deciding what tests to create or run.
-4. Read `DESIGN.md` before UI, styling, layout, docs visual, product page, marketing page, or reusable UI pattern changes.
-5. Use `continuous-development` to plan, implement, and create tests.
-6. Use `continuous-delivery` to verify evidence and release readiness.
-
-## Tech stack
-
-- Structure: pnpm monorepo.
-- Tooling: Vite+ (`vp`) for install/check/test/build/run where possible.
-- Language: TypeScript 6.
-- Runtime: Bun for server-side execution and local backend/runtime tasks.
-- TanStack Start deployment target: Nitro with Bun preset.
-- Full-stack app: TanStack Start in `apps/web`.
-- Frontend: React, TanStack Router, Query, DB, Table, Form, Store.
-- Styling: Tailwind CSS with a shadcn-compatible CSS variable theme bridge in `apps/web/src/styles.css`.
-- Visual identity: `DESIGN.md`.
-- UI package: external npm package `@ravenopsnet/ui`; do not create a local `packages/ui` package unless explicitly requested.
-- Forms: TanStack Form.
-- Validation: Zod.
-- Auth: Better Auth.
-- Backend business logic: `apps/core` exports functions/services imported by `apps/web` server functions and server routes.
-- Backend libraries: prefer Bun built-ins and Bun-specific APIs over Node compatibility APIs and unnecessary npm packages.
-- Backend service style: Effect v4 beta through `effect@beta` until Effect v4 becomes stable.
-- ORM: Drizzle ORM.
-- Database: Turso/libSQL.
-- Product docs: Astro + Starlight in `apps/docs`.
-- Tests: Vitest, React Testing Library, Playwright, MSW, V8 coverage.
-- Lint/format: OXC via Oxlint and Oxfmt.
-
-## Commands
-
-- Install: `vp install` or `pnpm install`
-- Check: `pnpm check`
-- Lint: `pnpm lint`
-- Format check: `pnpm format`
-- Format write: `pnpm format:write`
-- Typecheck: `pnpm typecheck`
-- Unit/integration tests: `pnpm test`
-- E2E smoke tests: `pnpm test:e2e`
-- Build: `pnpm build`
-- Database generate: `pnpm db:generate`
-- Database migrate: `pnpm db:migrate`
+1. Convert product requirements into `SOW.md`.
+2. Derive domain modules from `SOW.md`.
+3. For each domain, create specs, use cases, UX flows, contracts, and test plan.
+4. Create frontend acceptance tests from UX flows and contracts.
+5. Implement UI from the acceptance tests and `DESIGN.md`.
+6. Create backend/domain tests from contracts and business rules.
+7. Implement domain models, core functions, database schema, and migrations.
+8. Wire thin app routes to module implementation.
+9. Run module tests and cross-domain E2E flows.
+10. Record delivery evidence.
 
 ## Engineering rules
 
-- Prefer Bun built-ins in server-side code.
-- Prefer platform APIs over unnecessary dependencies.
-- Prefer Effect for backend service composition, explicit errors, retries, concurrency, resource management, and observability boundaries.
-- Keep domain logic outside React components.
-- Keep backend business logic in `apps/core`, not in route components.
-- `apps/core` must not expose a standalone HTTP API by default; it exports functions used by `apps/web` server functions and server routes.
-- Keep database schema in `packages/db`.
-- Keep shared business types and Zod schemas in `packages/domain`.
-- Import reusable UI from external `@ravenopsnet/ui`.
-- Do not create local duplicate UI primitives for components already available from `@ravenopsnet/ui`.
-- For UI changes, read `DESIGN.md` first and implement with semantic Tailwind/shadcn variables.
-- Do not hard-code RAVEN brand hex values in route components; put theme values in the CSS token bridge.
-- Do not make app packages import private internals from other packages.
-- Use package exports.
-- Keep PRs small and focused.
-- Do not change public contracts without contract/integration tests.
-- Do not change database schema without migration evidence.
-- Do not weaken tests to pass CI.
-
-## Documentation rules
-
-- Update `docs/architecture.md` when architecture, boundaries, modules, data ownership, contracts, stack choices, or app responsibilities change.
-- Update `docs/testing.md` when test tools, commands, test policy, or CI behavior changes.
-- Update `DESIGN.md` when visual identity, design tokens, component rules, or reusable UI patterns intentionally change.
-- Agents may update factual docs.
-- Humans approve changes to architecture principles, delivery policy, security policy, and stack choices.
-
-
-## Design token ownership
-
-- `DESIGN.md` defines the semantic design contract.
-- `apps/web/src/styles.css` implements that contract as Tailwind/shadcn-compatible CSS variables for this app.
-- `@ravenopsnet/ui` should consume semantic variables exposed by the app, not require a local `packages/ui` copy.
-- If `DESIGN.md` and the executable CSS theme disagree, fix the mismatch or explicitly document the intentional design-system change.
+- Prefer working inside one domain module at a time.
+- Do not implement code before relevant module docs are coherent.
+- Do not create frontend mocks without contracts.
+- Do not implement backend/core code before backend/domain tests exist where practical.
+- Do not change public contracts without updating `CONTRACTS.md` and relevant tests.
+- Do not change product scope without updating `SOW.md`.
+- Do not change UX behavior without updating `UX.md` and relevant acceptance tests.
+- Do not change visual design rules without updating `DESIGN.md`.
+- Do not weaken or delete tests to make a change pass.
+- Do not bypass failing checks.

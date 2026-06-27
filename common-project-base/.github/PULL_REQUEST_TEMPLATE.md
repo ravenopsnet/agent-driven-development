@@ -1,81 +1,29 @@
-## Goal
+## Summary
 
-What does this PR change and why?
+Describe the change.
 
-## Scope
+## SOW/module docs
 
-What files/modules were intentionally changed?
+- `SOW.md` updated: yes/no
+- Module(s):
+- `SPEC.md` updated: yes/no
+- `USE_CASES.md` updated: yes/no
+- `UX.md` updated: yes/no
+- `CONTRACTS.md` updated: yes/no
+- `TEST_PLAN.md` updated: yes/no
+- `DELIVERY_EVIDENCE.md` updated: yes/no
 
-## Non-goals
+## Tests and evidence
 
-What is intentionally not included?
+- [ ] Unit tests pass
+- [ ] Integration tests pass
+- [ ] E2E/acceptance tests pass
+- [ ] Cross-domain E2E tests pass if applicable
+- [ ] Typecheck/lint/format/build pass
+- [ ] Screenshots included for UI changes when possible
+- [ ] Contracts and mocks are consistent
+- [ ] Rollback notes included
 
-## Change type
+## Risk
 
-- [ ] Feature
-- [ ] Bug fix
-- [ ] Refactor
-- [ ] API change
-- [ ] Database change
-- [ ] UI change
-- [ ] Performance change
-- [ ] Security-sensitive change
-- [ ] Tooling/CI change
-- [ ] Documentation-only change
-
-## Tests added or updated
-
-- Unit:
-- Integration:
-- Contract:
-- Migration:
-- E2E smoke:
-- Security/permission:
-- Performance:
-
-## Verification evidence
-
-Commands run:
-
-```bash
-# paste commands here
-```
-
-Results:
-
-```text
-# paste relevant output here
-```
-
-## Documentation updates
-
-- [ ] No architecture/testing docs needed
-- [ ] Updated `docs/architecture.md`
-- [ ] Updated `docs/testing.md`
-- [ ] Updated `AGENTS.md`
-- [ ] Updated skills
-
-## Risk and rollback
-
-Risk level: low / medium / high
-
-Rollback plan:
-
-## Screenshots / recordings
-
-Required for meaningful UI changes.
-
-## Known limitations / follow-ups
-
-List any known gaps or follow-up tasks.
-
-
-## Design / UI evidence
-
-- [ ] No UI/design changes
-- [ ] Read and followed `DESIGN.md`
-- [ ] Reused existing component-library primitives
-- [ ] Desktop behavior checked
-- [ ] Mobile behavior checked
-- [ ] Screenshot/recording evidence included when useful
-- [ ] `DESIGN.md` updated if visual identity, tokens, or reusable UI patterns changed
+List security, data, migration, contract, UX, and release risks.

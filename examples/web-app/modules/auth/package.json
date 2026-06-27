@@ -1,0 +1,24 @@
+{
+  "name": "@ravenopsnet/auth",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./domain": "./domain/index.ts",
+    "./core": "./core/index.ts",
+    "./db": "./db/index.ts",
+    "./web": "./web/index.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@ravenopsnet/config": "workspace:*",
+    "@ravenopsnet/db": "workspace:*",
+    "better-auth": "catalog:"
+  },
+  "devDependencies": {
+    "vitest": "catalog:"
+  }
+}

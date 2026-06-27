@@ -1,0 +1,23 @@
+{
+  "name": "@ravenopsnet/health",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./domain": "./domain/index.ts",
+    "./core": "./core/index.ts",
+    "./db": "./db/index.ts",
+    "./web": "./web/index.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "effect": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "vitest": "catalog:"
+  }
+}
